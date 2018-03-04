@@ -1,18 +1,19 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 // components
-import { HomeComponent } from './core/home/home.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { SigninComponent } from './auth/signin/signin.component';
 import { LobbyComponent } from './lobby/lobby.component';
+import { StatsComponent } from './stats/stats.component';
 
 const appRoutes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: '', component: LobbyComponent },
   // { path: 'movies', loadChildren: './movies/movies.module#MoviesModule'},
   { path: 'lobby', component: LobbyComponent },
+  { path: 'stats', component: StatsComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'signin', component: SigninComponent },
-  { path: '**', component: HomeComponent }
+  { path: '**', component: LobbyComponent }
 
 ];
 

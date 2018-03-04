@@ -13,14 +13,22 @@ import { SharedModule } from './shared/shared.module';
 import { AppComponent } from './app.component';
 import { LobbyComponent } from './lobby/lobby.component';
 import { NewGameComponent } from './new-game/new-game.component';
-import { PlayerDetailsComponent } from './player-details/player-details.component';
+import { StatsComponent } from './stats/stats.component';
+import { PlayerListComponent } from './lobby/player-list/player-list.component';
+import { PlayerDetailsComponent } from './lobby/player-details/player-details.component';
+import { PlayerEditComponent } from './lobby/player-edit/player-edit.component';
+import { PlayerItemComponent } from './lobby/player-list/player-item/player-item.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LobbyComponent,
     NewGameComponent,
-    PlayerDetailsComponent
+    PlayerDetailsComponent,
+    StatsComponent,
+    PlayerListComponent,
+    PlayerEditComponent,
+    PlayerItemComponent
   ],
   imports: [
     BrowserModule,
