@@ -2,6 +2,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
+
 // my modules
 import { CoreModule } from './core/core.module';
 import { AppRoutingModule } from './app-routing.module';
@@ -11,11 +12,15 @@ import { SharedModule } from './shared/shared.module';
 // components
 import { AppComponent } from './app.component';
 import { LobbyComponent } from './lobby/lobby.component';
+import { NewGameComponent } from './new-game/new-game.component';
+import { PlayerDetailsComponent } from './player-details/player-details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LobbyComponent
+    LobbyComponent,
+    NewGameComponent,
+    PlayerDetailsComponent
   ],
   imports: [
     BrowserModule,
