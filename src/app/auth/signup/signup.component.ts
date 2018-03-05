@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { NgForm, Validators } from "@angular/forms";
+import { NgForm, Validators } from '@angular/forms';
 
 import { AuthService } from '../auth.service';
 

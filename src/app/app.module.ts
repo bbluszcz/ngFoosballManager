@@ -12,7 +12,7 @@ import { SharedModule } from './shared/shared.module';
 // components
 import { AppComponent } from './app.component';
 import { LobbyComponent } from './lobby/lobby.component';
-import { NewGameComponent } from './new-game/new-game.component';
+import { NewGameComponent } from './lobby/new-game/new-game.component';
 import { StatsComponent } from './stats/stats.component';
 import { PlayerListComponent } from './lobby/player-list/player-list.component';
 import { PlayerDetailsComponent } from './lobby/player-details/player-details.component';

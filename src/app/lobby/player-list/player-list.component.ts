@@ -46,7 +46,7 @@ export class PlayerListComponent implements OnInit, OnDestroy {
     this.listFilter = '';
   }
 
-  onNewMovie() {
+  onNewGame() {
     this.router.navigate(['new'], { relativeTo: this.route });
   }
 
