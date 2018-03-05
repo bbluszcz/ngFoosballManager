@@ -1,4 +1,4 @@
-import { Router, ActivatedRoute } from "@angular/router";
+import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -11,11 +11,6 @@ export class LobbyComponent implements OnInit {
   constructor(private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
-  }
-
-  onNewGame() {
-    this.router.navigate(['new'], {relativeTo: this.route});
-
   }
 
 }

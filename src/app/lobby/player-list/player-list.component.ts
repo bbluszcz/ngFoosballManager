@@ -33,13 +33,11 @@ export class PlayerListComponent implements OnInit, OnDestroy {
     //       this.players = players;
     //     }
     //   );
-    this.players = this.playersService.getPlayers();
-
-//     this.playersService.getJSON().subscribe((players: any[]) => {
-//     this.players = players; console.log('players ', this.players);
-// },
-//      error => console.log(error)
-//     );
+    this.playersService.getJSON().subscribe((players: any[]) => {
+      this.players = this.playersService.getPlayers();
+},
+     error => console.log(error)
+    );
   }
 
   onClearSearch() {

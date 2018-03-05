@@ -8,13 +8,11 @@ import { PlayersService } from './players.service';
 
 @NgModule({
   declarations: [
-    // InputFilterPipe,
-    // SortPipe
+   // SortPipe
   ],
   imports: [FormsModule],
   exports: [
     CommonModule,
-
     // InputFilterPipe,
     // SortPipe
   ],

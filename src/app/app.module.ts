@@ -19,12 +19,14 @@ import { PlayerDetailsComponent } from './lobby/player-details/player-details.co
 import { PlayerEditComponent } from './lobby/player-edit/player-edit.component';
 import { PlayerItemComponent } from './lobby/player-list/player-item/player-item.component';
 import { LobbyStartComponent } from './lobby/lobby-start/lobby-start.component';
+import { SelectedPlayerComponent } from './lobby/new-game/selected-player/selected-player.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LobbyComponent,
     NewGameComponent,
+    SelectedPlayerComponent,
     PlayerDetailsComponent,
     StatsComponent,
     PlayerListComponent,
