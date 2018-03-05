@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
 import { AuthService } from '../auth.service';
@@ -21,7 +21,7 @@ export class SigninComponent implements OnInit {
   get errorMsg(): string {
     this.errorAlert = this.authService.errorMsg;
 
-    this.errorAlert = this.errorAlert ? this.errorAlert.replace('Error: ', '') : '';
+    // this.errorAlert = this.errorAlert ? this.errorAlert.replace('Error: ', '') : '';
     return this.errorAlert;
   }
 
@@ -30,7 +30,7 @@ export class SigninComponent implements OnInit {
     const password = form.value.password;
     this.authService.signinUser(email, password);
     this.validateForm(form);
-    console.log(" onSignin ", this.errorAlert);
+    console.log(' onSignin ', this.errorAlert);
 
   }
 
@@ -38,7 +38,7 @@ export class SigninComponent implements OnInit {
       if (form.invalid && form.touched ) {
         this.isValidated = false;
       }
-      console.log(" onSignin ", this.errorAlert);
+      console.log(' onSignin ', this.errorAlert);
 
     }
 

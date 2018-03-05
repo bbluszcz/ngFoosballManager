@@ -29,7 +29,7 @@
         },
         {
             "name": "Jan Sobieski",
-            "level": "expert",
+            "level": "Expert",
             "victories": "52",
             "goalsScored": "77",
             "gamesPlayed": "60",
@@ -47,7 +47,7 @@
         },
         {
             "name": "Jan Karol Chodkiewicz",
-            "level": "advanced",
+            "level": "Advanced",
             "victories": "9",
             "goalsScored": "18",
             "gamesPlayed": "20",

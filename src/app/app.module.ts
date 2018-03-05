@@ -18,6 +18,7 @@ import { PlayerListComponent } from './lobby/player-list/player-list.component';
 import { PlayerDetailsComponent } from './lobby/player-details/player-details.component';
 import { PlayerEditComponent } from './lobby/player-edit/player-edit.component';
 import { PlayerItemComponent } from './lobby/player-list/player-item/player-item.component';
+import { LobbyStartComponent } from './lobby/lobby-start/lobby-start.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { PlayerItemComponent } from './lobby/player-list/player-item/player-item
     StatsComponent,
     PlayerListComponent,
     PlayerEditComponent,
-    PlayerItemComponent
+    PlayerItemComponent,
+    LobbyStartComponent
   ],
   imports: [
     BrowserModule,

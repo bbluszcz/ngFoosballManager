@@ -35,11 +35,11 @@ export class PlayerListComponent implements OnInit, OnDestroy {
     //   );
     this.players = this.playersService.getPlayers();
 
-    this.playersService.getJSON().subscribe((players: any[]) => {
-    this.players = players; console.log('players ', this.players);
-},
-     error => console.log(error)
-    );
+//     this.playersService.getJSON().subscribe((players: any[]) => {
+//     this.players = players; console.log('players ', this.players);
+// },
+//      error => console.log(error)
+//     );
   }
 
   onClearSearch() {
@@ -56,7 +56,7 @@ export class PlayerListComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    // this.subscription.unsubscribe();
   }
 
 }

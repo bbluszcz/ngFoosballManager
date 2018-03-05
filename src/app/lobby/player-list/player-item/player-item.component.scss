@@ -1,6 +1,12 @@
 * {
     cursor: pointer
 }
+
+.list-group-item{
+    padding:0;
+    min-height: 100px;
+}
+
 .name{
     display: flex;
     align-items: center;
@@ -11,9 +17,8 @@
 }
 
 .photo{
-    margin: 10px 0;
-    height: 70px;
-    position: absolute;
+    max-width: 70px;
+    height: 100px;
 }
 
 .badge{
