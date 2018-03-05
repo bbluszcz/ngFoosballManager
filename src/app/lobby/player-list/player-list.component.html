@@ -1,11 +1,9 @@
 
 <div class="row clearfix">
-  <div class="col-xs-12">
-    <app-player-item *ngFor="let player of players; let i = index"
-      [player]="player" [id]="player.index">
+    <app-player-item *ngFor="let player of players; let i = index" class="col-lg-6"
+      [player]="player" [id]="i">
     </app-player-item>
     <br>
-  </div>
 </div>
 
 

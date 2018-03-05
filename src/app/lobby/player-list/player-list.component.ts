@@ -14,7 +14,6 @@ export class PlayerListComponent implements OnInit, OnDestroy {
 
 
   players: any[];
-  genres: any[];
   subscription: Subscription;
 
   listFilter: string;
@@ -22,19 +21,25 @@ export class PlayerListComponent implements OnInit, OnDestroy {
   sortByFilter = '';
 
   constructor(private playersService: PlayersService,
-    private authService: AuthService,
-    private router: Router,
-    private route: ActivatedRoute) {
+              private authService: AuthService,
+              private router: Router,
+              private route: ActivatedRoute) {
   }
 
   ngOnInit() {
-    this.subscription = this.playersService.playersChanged
-      .subscribe(
-        (players: any[]) => {
-          this.players = players;
-        }
-      );
+    // this.subscription = this.playersService.playersChanged
+    //   .subscribe(
+    //     (players: any[]) => {
+    //       this.players = players;
+    //     }
+    //   );
     this.players = this.playersService.getPlayers();
+
+    this.playersService.getJSON().subscribe((players: any[]) => {
+    this.players = players; console.log('players ', this.players);
+},
+     error => console.log(error)
+    );
   }
 
   onClearSearch() {

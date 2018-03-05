@@ -1,6 +1,6 @@
 <a [routerLink]="[id]" routerLinkActive="active" class="list-group-item clearfix">
-    <span class="img pull-left">
-    <img [src]="player.imagePath" alt="{{ player.photo }}" class="img-responsive">
+  <span class="img pull-left">
+    <img [src]="player.photo" alt="{{ player.photo }}" class="photo">
   </span>
   <div class=" pull-right">
     <h3 class="list-group-item-heading player__title">
@@ -9,15 +9,14 @@
         {{player.name}}
       </span>
     </h3>
-      <h5 class="badge">
-      <strong>Director: </strong> {{player.level}}, </h5>
+    <h5 class="badge"> {{player.level}}</h5>
     <h5 class="player__victories">
       <strong>Victories: </strong> {{player.victories}}, </h5>
     <h5 class="player__goals">
-      <strong>Victories: </strong> {{player.goalsScored}}, </h5>
+      <strong>Goals: </strong> {{player.goalsScored}}, </h5>
     <h5 class="player__games">
-      <strong>Victories: </strong> {{player.gamesPlayed}}, </h5>
- <a href="email" class="player__games">   {{player.email}}, </a>
+      <strong>Games: </strong> {{player.gamesPlayed}}, </h5>
+    <a href="email" class="player__games"> {{player.email}} </a>
   </div>
 
 </a>

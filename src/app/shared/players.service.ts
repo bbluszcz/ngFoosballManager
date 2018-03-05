@@ -1,17 +1,32 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
+import 'rxjs/add/operator/map';
+import { Http } from '@angular/http';
+import { Response } from '@angular/http';
+
 
 @Injectable()
 export class PlayersService {
+  players: any[];
   playersChanged = new Subject<any[]>();
 
-  constructor() { }
+    constructor(private http: Http) {
+    }
 
-  getPlayers() {
-    return this.players.slice();
-  }
+     getJSON(): Observable<any> {
+        return this.http.get('../../assets/players.json')
+            .map((res: any) =>  this.players = res.json() )
+            .catch((error: any) => Observable.throw( 'error', error));
+    }
 
-  players = [
+    getPlayers() {
+        console.log("players2 ", this.players2);
+        return this.players2.slice();
+    }
+
+
+    players2 = [
         {
             "name": "Stanislaw Koniecpolski",
             "level": "Beginner",
@@ -26,6 +41,7 @@ export class PlayersService {
             "level": "Advanced",
             "victories": "18",
             "goalsScored": "23",
+            // tslint:disable-next-line:quotemark
             "gamesPlayed": "29",
             "email": "smehmed@ecovadis.com",
             "photo": "assets/images/sm.jpg"
@@ -43,38 +59,41 @@ export class PlayersService {
             "name": "Jan Sobieski",
             "level": "expert",
             "victories": "52",
-            "goalsScored": "77",
-            "gamesPlayed": "60",
-            "email": "jsobieski@ecovadis.com",
-            "photo": "assets/images/js.jpg"
+            "goalsScored": '77',
+            'gamesPlayed': '60',
+            'email': 'jsobieski@ecovadis.com',
+            'photo': 'assets/images/js.jpg'
         },
         {
-            "name": "Kara Mustafa Pasha",
-            "level": "Advanced",
-            "victories": "",
-            "goalsScored": "32",
-            "gamesPlayed": "25",
-            "email": "pkaramustafa@ecovadis.com",
-            "photo": "assets/images/kmp.jpg"
+            'name': 'Kara Mustafa Pasha',
+            'level': 'Advanced',
+            'victories': '',
+            'goalsScored': '32',
+            'gamesPlayed': '25',
+            'email': 'pkaramustafa@ecovadis.com',
+            'photo': 'assets/images/kmp.jpg'
         },
         {
-            "name": "Jan Karol Chodkiewicz",
-            "level": "advanced",
-            "victories": "9",
-            "goalsScored": "18",
-            "gamesPlayed": "20",
-            "email": "skoniecpolski@ecovadis.com",
-            "photo": "assets/images/jc.jpg"
+            'name': 'Jan Karol Chodkiewicz',
+            'level': 'advanced',
+            'victories': '9',
+            'goalsScored': '18',
+            'gamesPlayed': '20',
+            'email': 'skoniecpolski@ecovadis.com',
+            'photo': 'assets/images/jc.jpg'
         },
         {
-            "name": "Adil Giray",
-            "level": "Beginner",
-            "victories": "2",
-            "goalsScored": "",
-            "gamesPlayed": "5",
-            "email": "gadil@ecovadis.com",
-            "photo": ""
+            'name': 'Adil Giray',
+            'level': 'Beginner',
+            'victories': '2',
+            'goalsScored': '',
+            'gamesPlayed': '5',
+            'email': 'gadil@ecovadis.com',
+            'photo': ''
         }
-    ]
+    ];
+
+
+
 
 }
