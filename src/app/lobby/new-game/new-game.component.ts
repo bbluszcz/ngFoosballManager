@@ -7,15 +7,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./new-game.component.scss']
 })
 export class NewGameComponent implements OnInit {
-players: any[];
-teamA: any[];
-teamB: any[];
+
+  players: any[];
+  teamA = [];
+  teamB = [];
 
   constructor(private playerService: PlayersService) { }
 
   ngOnInit() {
     this.players = this.playerService.getPlayers();
-    console.log('players ', this.players);
+    this.teamA = this.players;
+   console.log('teamA ', this.teamA);
   }
+
 
 }

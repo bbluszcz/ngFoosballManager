@@ -7,7 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class SelectedPlayerComponent implements OnInit {
   @Input() player;
-  @Input() id: number;
+  @Input() index;
 
   constructor() { }
 
