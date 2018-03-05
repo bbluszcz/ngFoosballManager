@@ -34,7 +34,7 @@ export class PlayersService {
             "goalsScored": "12",
             "gamesPlayed": "23",
             "email": "skoniecpolski@ecovadis.com",
-            "photo": "assets/images/sk.jpg"
+            "photo": "assets/images/sk.PNG"
         },
         {
             "name": "Sultan Mehmed",
