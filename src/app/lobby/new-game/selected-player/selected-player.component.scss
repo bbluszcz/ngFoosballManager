@@ -1,0 +1,27 @@
+* {
+    cursor: pointer
+}
+
+.list-group-item{
+    padding:0;
+    min-height: 100px;
+
+}
+
+.name{
+    display: flex;
+    align-items: center;
+    height: 52px;
+        h3{
+            margin: 2px 0;
+        }
+}
+
+.photo{
+    max-width: 70px;
+    height: 100px;
+}
+
+.badge{
+    margin: 0;
+}

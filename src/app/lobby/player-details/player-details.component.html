@@ -1,0 +1,33 @@
+<div class="row">
+    <div class="col-xs-6 photo-holder">
+        <img [src]="player.photo" alt="{{ player.photo }}" class="photo">
+    </div>
+    <div class="col-xs-6 text-holder">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="name ">
+                    <h4>{{ player.name }}</h4>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <h5 class="badge"> {{player.level}}</h5>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <h5 class="victories"> Victories: {{player.victories}}</h5>
+            </div>
+            <div class="col-xs-12">
+                <h5 class="goalsScored"> Goals scored: {{player.goalsScored}}</h5>
+            </div>
+            <div class="col-xs-12">
+                <h5 class="gamesPlayed"> Games played: {{player.gamesPlayed}}</h5>
+            </div>
+            <div class="col-xs-12">
+                <a class="email" href='"mailto:"+{{player.email}}'>  {{player.email}}</a>
+            </div>
+        </div>
+    </div>
+</div>

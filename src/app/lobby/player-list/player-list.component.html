@@ -1,0 +1,11 @@
+<button mat-raised-button color="primary" (click)="onNewGame()"> New Game</button>
+<hr>
+<div class="row clearfix">
+  <p class="text-muted"> Players available:</p>
+    <app-player-item *ngFor="let player of players; let i = index" class="item col-xs-12 col-md-6"
+      [player]="player" [id]="i">
+    </app-player-item>
+    <br>
+</div>
+
+

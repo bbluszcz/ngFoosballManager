@@ -1,0 +1,29 @@
+.autocomplete-container {
+  min-width: 100px;
+  max-width: 3000px;
+  width: 100%;
+  .mat-option{
+    font-size: 10px;
+  }
+}
+
+.autocomplete-full-width {
+  width: 100%;
+}
+
+.getStartedBtn{
+  margin: 10px;
+}
+
+.help-block{
+  margin-left: 20px;
+  color: red;
+}
+
+.teams{
+  margin: 10px 30px;
+}
+
+.item{
+  margin-bottom: 20px;
+}
