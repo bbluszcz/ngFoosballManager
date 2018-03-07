@@ -21,7 +21,6 @@ export class PlayersService {
             .map(json => {
                 this.players = json['players'];
                 this.playersChanged.next(this.players.slice());
-                 console.log('this.players ', this.players);
 
         })
             .catch((error: any) => Observable.throw( 'error', error));

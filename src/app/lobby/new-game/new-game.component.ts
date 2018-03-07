@@ -62,13 +62,20 @@ export class NewGameComponent implements OnInit {
     this.auxilliaryFn();
   }
 
-  auxilliaryFn() {
-    console.log('form ', this.form);
+  auxilliaryFn(deletedPlayersIndexes?) {
+  //   let deletedPlayersIndexes1 = [];
+  //   console.log('indexes1', this.indexes);
+  //   if (deletedPlayersIndexes) {deletedPlayersIndexes1 = deletedPlayersIndexes; }
+  //   console.log('deletedPlayersIndexes1 ', deletedPlayersIndexes1);
+  //   if (deletedPlayersIndexes1.length !== 0) {for (let i = 0; i < deletedPlayersIndexes.length; i++) {
+  //     this.indexes.splice(this.players.findIndex(x => x === this.indexes[i]));
+  //   }
+  // }
+    console.log('indexes2 ', this.indexes);
     this.invitedPlayer = this.form.value.selectedPlayer;
     this.team = this.form.value.team;
     const index = this.players.findIndex(x => x.name === this.invitedPlayer);
-    console.log('index ', index);
-    console.log('indexes ', this.indexes);
+    // console.log('index ', index);
 
     if (this.indexes.indexOf(index) === -1) {
       if (this.team === 'teamA' && this.teamA.length <= 1) {
@@ -81,6 +88,8 @@ export class NewGameComponent implements OnInit {
         this.alertTeamB = true;
       }
       this.indexes.push(index);
+      console.log('indexes3 ', this.indexes);
+
     } else {
       this.alertDuplicatePlayer = true;
     }
@@ -105,16 +114,24 @@ export class NewGameComponent implements OnInit {
   }
 
   onDeletePlayer() {
-    const deletedPlayersFromA = [];
-    this.idsOfPlayersA.map(i => deletedPlayersFromA.push(this.teamA[i]['name']));
-    const deletedPlayersFromB = [];
-    this.idsOfPlayersA.map(i => deletedPlayersFromB.push(this.teamB[i]['name'] ) );
+    let deletedPlayersFromA = [];
+    if (this.idsOfPlayersA.length !== 0) { this.idsOfPlayersA.map(i => deletedPlayersFromA.push(this.teamA[i]['name']));
+      }
+    let deletedPlayersFromB = [];
+    if (this.idsOfPlayersB.length !== 0) {this.idsOfPlayersB.map(i => deletedPlayersFromB.push(this.teamB[i]['name'] ) );
+    }
     const deletedPlayers = deletedPlayersFromA.concat(deletedPlayersFromB);
+    const deletedPlayersIndexes = [];
+    for (let i = 0; i < deletedPlayers.length; i++) {
+      deletedPlayersIndexes.push(this.players.findIndex(x => x.name === deletedPlayers[i]));
+    }
     this.idsOfPlayersA.map(el => this.teamA.splice(el, 1));
     this.idsOfPlayersB.map(el => this.teamB.splice(el, 1));
     this.idsOfPlayersA = [];
     this.idsOfPlayersB = [];
-    this.auxilliaryFn();
+    deletedPlayersFromA = [];
+    deletedPlayersFromB = [];
+    this.auxilliaryFn(deletedPlayersIndexes);
   }
 
   onGetStarted() {
