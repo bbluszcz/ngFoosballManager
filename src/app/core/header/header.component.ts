@@ -1,4 +1,4 @@
-import { OnInit } from '@angular/core';
+import { OnInit, Renderer2 } from '@angular/core';
 import { Component } from '@angular/core';
 import { Response } from '@angular/http';
 
@@ -11,6 +11,9 @@ import { AuthService } from '../../auth/auth.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit  {
+
+  navbarToggler = false;
+
 token: string;
 
   constructor(private dataStorageService: DataStorageService,
@@ -19,26 +22,18 @@ token: string;
   ngOnInit() {
   }
 
+  onNavbarToggle() {
+    this.navbarToggler = !this.navbarToggler;
+  }
 
   // onSaveData() {
-  //   this.dataStorageService.storeMovies()
-  //     .subscribe(
-  //       (response: Response) => {
-  //       }
-  //     );
-  //   this.dataStorageService.storeFavActors()
-  //     .subscribe(
-  //       (response: Response) => {
-  //       }
-  //     );
   // }
 
   // onFetchData() {
-  //   this.dataStorageService.getMovies();
-  //   this.dataStorageService.getFavActors();
   // }
 
   onLogout() {
+
     this.authService.logout();
   }
 

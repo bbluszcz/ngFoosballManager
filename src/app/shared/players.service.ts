@@ -16,7 +16,7 @@ export class PlayersService {
     }
 
      getJSON(): Observable<any> {
-        return this.http.get('../../assets/players.json')
+        return this.http.get('./assets/players.json')
             .map((res: any) =>  this.players = res.json() )
             .map(json => {
                 this.players = json['players'];

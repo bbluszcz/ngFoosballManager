@@ -15,8 +15,6 @@ import { AuthRoutingModule } from './auth/auth-routing.module';
 const appRoutes: Routes = [
   { path: '', redirectTo: 'lobby', pathMatch: 'full' },
   { path: 'stats', component: StatsComponent },
-  // { path: 'signup', component: SignupComponent },
-  // { path: 'signin', component: SigninComponent },
   { path: '**', redirectTo: 'lobby', pathMatch: 'full' }
 
 ];

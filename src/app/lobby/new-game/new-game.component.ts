@@ -59,23 +59,9 @@ export class NewGameComponent implements OnInit {
   }
 
   onSubmit() {
-    this.auxilliaryFn();
-  }
-
-  auxilliaryFn(deletedPlayersIndexes?) {
-  //   let deletedPlayersIndexes1 = [];
-  //   console.log('indexes1', this.indexes);
-  //   if (deletedPlayersIndexes) {deletedPlayersIndexes1 = deletedPlayersIndexes; }
-  //   console.log('deletedPlayersIndexes1 ', deletedPlayersIndexes1);
-  //   if (deletedPlayersIndexes1.length !== 0) {for (let i = 0; i < deletedPlayersIndexes.length; i++) {
-  //     this.indexes.splice(this.players.findIndex(x => x === this.indexes[i]));
-  //   }
-  // }
-    console.log('indexes2 ', this.indexes);
     this.invitedPlayer = this.form.value.selectedPlayer;
     this.team = this.form.value.team;
-    const index = this.players.findIndex(x => x.name === this.invitedPlayer);
-    // console.log('index ', index);
+    const index = this.players.findIndex(player => player.name === this.invitedPlayer);
 
     if (this.indexes.indexOf(index) === -1) {
       if (this.team === 'teamA' && this.teamA.length <= 1) {
@@ -88,8 +74,6 @@ export class NewGameComponent implements OnInit {
         this.alertTeamB = true;
       }
       this.indexes.push(index);
-      console.log('indexes3 ', this.indexes);
-
     } else {
       this.alertDuplicatePlayer = true;
     }
@@ -115,13 +99,16 @@ export class NewGameComponent implements OnInit {
 
   onDeletePlayer() {
     let deletedPlayersFromA = [];
-    if (this.idsOfPlayersA.length !== 0) { this.idsOfPlayersA.map(i => deletedPlayersFromA.push(this.teamA[i]['name']));
-      }
     let deletedPlayersFromB = [];
-    if (this.idsOfPlayersB.length !== 0) {this.idsOfPlayersB.map(i => deletedPlayersFromB.push(this.teamB[i]['name'] ) );
-    }
-    const deletedPlayers = deletedPlayersFromA.concat(deletedPlayersFromB);
     const deletedPlayersIndexes = [];
+
+    if (this.idsOfPlayersA.length !== 0) {
+      this.idsOfPlayersA.map(i => deletedPlayersFromA.push(this.teamA[i]['name']));
+      }
+    if (this.idsOfPlayersB.length !== 0) {
+      this.idsOfPlayersB.map(i => deletedPlayersFromB.push(this.teamB[i]['name'] ) );
+      }
+    const deletedPlayers = [...deletedPlayersFromA, ...deletedPlayersFromB];
     for (let i = 0; i < deletedPlayers.length; i++) {
       deletedPlayersIndexes.push(this.players.findIndex(x => x.name === deletedPlayers[i]));
     }
@@ -131,7 +118,11 @@ export class NewGameComponent implements OnInit {
     this.idsOfPlayersB = [];
     deletedPlayersFromA = [];
     deletedPlayersFromB = [];
-    this.auxilliaryFn(deletedPlayersIndexes);
+
+    if (typeof deletedPlayersIndexes !== 'undefined') {
+      this.indexes = this.indexes.filter(item =>
+        !deletedPlayersIndexes.includes(item));
+    }
   }
 
   onGetStarted() {
@@ -147,13 +138,13 @@ export class NewGameComponent implements OnInit {
     this.alertDuplicatePlayer = false;
   }
 
-
   // validators
   acceptableNamesValidator(control: FormControl): { [s: string]: boolean } {
-    // tslint:disable-next-line:max-line-length
-    const acceptableNames = ['Stanislaw Koniecpolski', 'Sultan Mehmed', 'Petro Doroshenko', 'Jan Sobieski', 'Kara Mustafa Pasha', 'Jan Karol Chodkiewicz', 'Adil Giray'];
-    if (acceptableNames.indexOf(control.value) === -1) {
-      return { 'playerDoesNotExist': true };
+    if (this.players) {
+      const acceptableNames = this.players.map(player => player.name);
+      if (acceptableNames.indexOf(control.value) === -1) {
+        return { 'playerDoesNotExist': true };
+      }
     }
   }
 
