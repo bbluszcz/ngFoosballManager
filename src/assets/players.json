@@ -21,7 +21,7 @@
         {
             "name": "Petro Doroshenko",
             "level": "Expert",
-            "victories": "44",
+            "victories": "  44",
             "goalsScored": "55",
             "gamesPlayed": "59",
             "email": "pdoroshenko@ecovadis.com",
@@ -39,7 +39,7 @@
         {
             "name": "Kara Mustafa Pasha",
             "level": "Advanced",
-            "victories": "",
+            "victories": "0",
             "goalsScored": "32",
             "gamesPlayed": "25",
             "email": "pkaramustafa@ecovadis.com",

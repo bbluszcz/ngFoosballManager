@@ -19,6 +19,7 @@ import { PlayerEditComponent } from './lobby/player-edit/player-edit.component';
 import { PlayerItemComponent } from './lobby/player-list/player-item/player-item.component';
 import { LobbyStartComponent } from './lobby/lobby-start/lobby-start.component';
 import { SelectedPlayerComponent } from './lobby/new-game/selected-player/selected-player.component';
+import { GameResultsComponent } from './lobby/game-results/game-results.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { SelectedPlayerComponent } from './lobby/new-game/selected-player/select
     PlayerListComponent,
     PlayerEditComponent,
     PlayerItemComponent,
-    LobbyStartComponent
+    LobbyStartComponent,
+    GameResultsComponent
   ],
   imports: [
     BrowserModule,

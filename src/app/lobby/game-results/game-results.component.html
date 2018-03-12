@@ -1,0 +1,37 @@
+<h3> Game results </h3>
+<p class="help-block"> Provide the recent game results </p>
+<br>
+
+<form [formGroup]="form" (ngSubmit)="onSubmitResults()">
+  <div class="row teams">
+    <div class="col-xs-12 col-md-6">
+      <div class="score-container">
+        <mat-form-field class="score-input">
+          <input matInput placeholder="Team A score" [formControlName]="'teamAscore'" #teamAscore>
+        </mat-form-field>
+      </div>
+      <div class="well text-center">
+        <h2> Team A</h2>
+          <p class="players" *ngFor="let player of teamA"> {{player.name}}</p>
+      </div>
+    </div>
+    <div class="col-xs-12 col-md-6 ">
+      <div class="score-container">
+        <mat-form-field class="score-input">
+          <input matInput placeholder="Team B score" [formControlName]="'teamBscore'" #teamBscore>
+        </mat-form-field>
+      </div>
+      <div class="well text-center">
+        <h2> Team B</h2>
+          <p class="players" *ngFor="let player of teamB"> {{player.name}}</p>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="text-center">
+      <button [disabled]="form.invalid" mat-raised-button color="primary" type="submit"> Submit results </button>
+    </div>
+  </div>
+</form>

@@ -5,6 +5,7 @@ import { NgForm, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
 import { startWith } from 'rxjs/operators/startWith';
 import { map } from 'rxjs/operators/map';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-new-game',
@@ -35,7 +36,8 @@ export class NewGameComponent implements OnInit {
     { value: 'teamB', viewValue: 'Team B' },
   ];
 
-  constructor(private playerService: PlayersService) {
+  constructor(private playerService: PlayersService,
+    private router: Router) {
     this.form = new FormGroup({
       'selectedPlayer': new FormControl(null, [Validators.required, this.acceptableNamesValidator.bind(this)]),
       'team': new FormControl(null, Validators.required),
@@ -63,17 +65,18 @@ export class NewGameComponent implements OnInit {
     this.team = this.form.value.team;
     const index = this.players.findIndex(player => player.name === this.invitedPlayer);
 
-    if (this.indexes.indexOf(index) === -1) {
+    if (!this.indexes.includes(index)) {
       if (this.team === 'teamA' && this.teamA.length <= 1) {
         this.teamA.push(this.players[index]);
+        this.indexes.push(index);
       } else if (this.team === 'teamB' && this.teamB.length <= 1) {
         this.teamB.push(this.players[index]);
+        this.indexes.push(index);
       } else if (this.team === 'teamA' && this.teamA.length > 1) {
         this.alertTeamA = true;
       } else if (this.team === 'teamB' && this.teamB.length > 1) {
         this.alertTeamB = true;
       }
-      this.indexes.push(index);
     } else {
       this.alertDuplicatePlayer = true;
     }
@@ -104,10 +107,10 @@ export class NewGameComponent implements OnInit {
 
     if (this.idsOfPlayersA.length !== 0) {
       this.idsOfPlayersA.map(i => deletedPlayersFromA.push(this.teamA[i]['name']));
-      }
+    }
     if (this.idsOfPlayersB.length !== 0) {
-      this.idsOfPlayersB.map(i => deletedPlayersFromB.push(this.teamB[i]['name'] ) );
-      }
+      this.idsOfPlayersB.map(i => deletedPlayersFromB.push(this.teamB[i]['name']));
+    }
     const deletedPlayers = [...deletedPlayersFromA, ...deletedPlayersFromB];
     for (let i = 0; i < deletedPlayers.length; i++) {
       deletedPlayersIndexes.push(this.players.findIndex(x => x.name === deletedPlayers[i]));
@@ -118,6 +121,7 @@ export class NewGameComponent implements OnInit {
     this.idsOfPlayersB = [];
     deletedPlayersFromA = [];
     deletedPlayersFromB = [];
+    this.resetAlerts();
 
     if (typeof deletedPlayersIndexes !== 'undefined') {
       this.indexes = this.indexes.filter(item =>
@@ -128,6 +132,16 @@ export class NewGameComponent implements OnInit {
   onGetStarted() {
     if (this.teamA.length !== this.teamB.length) {
       this.alertOddNumber = true;
+    }
+    if (this.form.valid &&
+        this.indexes.length > 0 &&
+        !this.alertTeamA &&
+        !this.alertTeamB &&
+        !this.alertDuplicatePlayer &&
+        !this.alertOddNumber) {
+      this.router.navigate(['/lobby/results']);
+      this.playerService.teamA = this.teamA;
+      this.playerService.teamB = this.teamB;
     }
   }
 
