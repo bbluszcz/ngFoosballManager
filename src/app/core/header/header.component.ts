@@ -11,7 +11,7 @@ import { AuthService } from '../../auth/auth.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit  {
-
+  position = 'before';
   navbarToggler = false;
 
 token: string;
@@ -26,14 +26,19 @@ token: string;
     this.navbarToggler = !this.navbarToggler;
   }
 
-  // onSaveData() {
-  // }
+  onSaveData() {
+    this.dataStorageService.storeStats().subscribe(
+      (response: Response) => {
+        console.log(response);
+      }
+    );
+  }
 
-  // onFetchData() {
-  // }
+  onFetchData() {
+    this.dataStorageService.getStats();
+  }
 
   onLogout() {
-
     this.authService.logout();
   }
 

@@ -8,13 +8,16 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
+import { MatTooltipModule } from '@angular/material/tooltip';
+
 
 // services
 import { PlayersService } from './players.service';
 // directives&pipes
 import { ActiveDirective } from './active.directive';
-// import { InputFilterPipe } from './input-filter.pipe';
-// import { SortPipe } from './sort.pipe';
+
 
 @NgModule({
   declarations: [
@@ -28,6 +31,9 @@ import { ActiveDirective } from './active.directive';
     MatButtonModule,
     MatAutocompleteModule,
     MatSelectModule,
+    MatTableModule,
+    MatSortModule,
+    MatTooltipModule
 ],
   exports: [
     CommonModule,
@@ -37,9 +43,9 @@ import { ActiveDirective } from './active.directive';
     MatButtonModule,
     MatAutocompleteModule,
     MatSelectModule,
-
-    // InputFilterPipe,
-    // SortPipe
+    MatTableModule,
+    MatSortModule,
+    MatTooltipModule
   ],
   providers: [PlayersService]
 })

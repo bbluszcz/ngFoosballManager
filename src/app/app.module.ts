@@ -12,7 +12,6 @@ import { SharedModule } from './shared/shared.module';
 import { AppComponent } from './app.component';
 import { LobbyComponent } from './lobby/lobby.component';
 import { NewGameComponent } from './lobby/new-game/new-game.component';
-import { StatsComponent } from './stats/stats.component';
 import { PlayerListComponent } from './lobby/player-list/player-list.component';
 import { PlayerDetailsComponent } from './lobby/player-details/player-details.component';
 import { PlayerEditComponent } from './lobby/player-edit/player-edit.component';
@@ -20,6 +19,7 @@ import { PlayerItemComponent } from './lobby/player-list/player-item/player-item
 import { LobbyStartComponent } from './lobby/lobby-start/lobby-start.component';
 import { SelectedPlayerComponent } from './lobby/new-game/selected-player/selected-player.component';
 import { GameResultsComponent } from './lobby/game-results/game-results.component';
+import { StatsComponent } from './stats/stats.component';
 
 @NgModule({
   declarations: [

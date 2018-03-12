@@ -3,7 +3,7 @@
     <div class="navbar-header">
       <a routerLink="/" class="navbar-brand">
         <span>
-          <img class="logo align-top" style="max-height: 20px; margin: 0 5px;" src="./assets/foosball.png" alt="logo">
+          <img class="logo align-top" src="./assets/foosball.png" alt="logo">
         </span>
         Ecovadis Foosball App
       </a>
@@ -22,7 +22,7 @@
           <a routerLink="/lobby">Lobby</a>
         </li>
         <li routerLinkActive="active">
-          <a routerLink="/stats">Stats</a>
+          <a routerLink="/stats">Leaderboard</a>
         </li>
       </ul>
 
@@ -30,7 +30,7 @@
         <ng-template [ngIf]="!isAuthenticated()">
 
           <li routerLinkActive="active">
-            <a routerLink="/signin">
+            <a routerLink="/signin" matTooltip="Log in to be able to save and fetch players data">
               <i class="fa fa-sign-in" aria-hidden="true"></i> Log in</a>
           </li>
           <li routerLinkActive="active">
@@ -42,17 +42,17 @@
 
         <ng-template [ngIf]="isAuthenticated()">
           <li>
-            <a style="cursor: pointer;" (click)="onSaveData()">
-              <i class="fa fa-upload" aria-hidden="true"></i> Save data</a>
+            <a  (click)="onSaveData()" matTooltip="Save  players stats on the server!">
+              <i class="fa fa-upload" aria-hidden="true" ></i> Save data</a>
           </li>
           <li>
-            <a style="cursor: pointer;" (click)="onFetchData()">
+            <a  (click)="onFetchData()" matTooltip="Fetch players stats from the server!">
               <i class="fa fa-download" aria-hidden="true"></i>Retrieve data</a>
           </li>
         </ng-template>
 
         <li>
-          <a style="cursor: pointer;" (click)="onLogout()" *ngIf="isAuthenticated()">
+          <a (click)="onLogout()" *ngIf="isAuthenticated()">
             <i class="fa fa-sign-in" aria-hidden="true"></i> Logout</a>
         </li>
       </ul>

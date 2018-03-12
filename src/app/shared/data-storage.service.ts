@@ -1,3 +1,5 @@
+import { Observable } from 'rxjs/Observable';
+import { PlayersService } from './players.service';
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 // tslint:disable-next-line:import-blacklist
@@ -10,45 +12,38 @@ export class DataStorageService {
   currentEmail: string;
   currentUser;
   constructor(private http: Http,
-              private authService: AuthService) {
+              private authService: AuthService,
+              private playerService: PlayersService      ) {
   }
 
-  // storeStats() {
-  //   const token = this.authService.getToken();
-  //   this.getCurrentUser();
-  //   return this.http.put('https://xxxx.firebaseio.com/' +
-  //     this.currentUser + '/xxx.json?auth=' + token, this.movieService.getMovies())
-  // }
+  storeStats(): Observable<Response> {
+    const token = this.authService.getToken();
+    this.getCurrentUser();
+    return this.http.put('https://ng-foosball.firebaseio.com/' +
+      this.currentUser + '/players.json?auth=' + token, this.playerService.players);
+  }
 
+  getStats() {
+    const token = this.authService.getToken();
+    this.getCurrentUser();
+    this.http.get('https://ng-foosball.firebaseio.com/' +
+      this.currentUser + '/players.json?auth=' + token)
+      .map(
+        (response: Response) => {
+          const players = response.json();
+      return players;
+    }
+      )
+      .subscribe(
+        (players) => {
+          this.playerService.setPlayers(players);
+        }
+      );
+      alert('The players data has been successfully retrieved from server');
+  }
 
-
-  // getStats() {
-  //   const token = this.authService.getToken();
-  //   this.getCurrentUser();
-  //   this.http.get('https://xxxx.firebaseio.com/' +
-  //     this.currentUser + '/xxx.json?auth=' + token)
-  //     .map(
-  //       (response: Response) => {
-  //         const movies: Actor[] = response.json();
-  //         for (const movie of movies) {
-  //           if (!movie['actors']) {
-  //             movie['actors'] = [];
-  //           }
-  //         }
-  //     return movies;
-  //   }
-  //     )
-  //     .subscribe(
-  //       (movies: Movie[]) => {
-  //         this.movieService.setMovies(movies);
-  //       }
-  //     );
-  // }
-
-
-
-  // getCurrentUser() {
-  //   this.currentUser = this.authService.currentUser;
-  //   this.currentEmail = this.authService.currentEmail;
-  // }
+  getCurrentUser() {
+    this.currentUser = this.authService.currentUser;
+    this.currentEmail = this.authService.currentEmail;
+  }
 }

@@ -7,7 +7,9 @@
 }
 
 
-.photo{
+.photo {
+    border-radius: 5px;
+    box-shadow: 2px 3px #888888;
     max-width: 300px;
     overflow: hidden;
     @media screen and (max-width: 650px) {

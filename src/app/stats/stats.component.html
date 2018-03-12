@@ -1,3 +1,33 @@
-<p>
-  stats works!
-</p>
+<div class="stats-container mat-elevation-z8">
+  <mat-table #table [dataSource]="dataSource" matSort>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="victories">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Victories </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.victories}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="goalsScored">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Goals scored </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.goalsScored}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="gamesPlayed">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Games played </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.gamesPlayed}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="level">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Level </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.level}} </mat-cell>
+    </ng-container>
+
+  </mat-table>
+</div>

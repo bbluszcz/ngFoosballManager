@@ -27,9 +27,11 @@ export class PlayersService {
             .catch((error: any) => Observable.throw( 'error', error));
     }
 
+    setPlayers(players) {
+        this.players = players;
+    }
+
     updateStats(teamAscore: number, teamBscore: number) {
-        // console.log('team A before', this.teamA[1].victories, this.teamA[1].goalsScored, this.teamA[1].gamesPlayed, );
-// console.log('team B before', this.teamB);
         this.updateGamesPlayed();
         this.updateGoalsScored(teamAscore, teamBscore);
         if (teamAscore > teamBscore) {
@@ -37,7 +39,6 @@ export class PlayersService {
         } else if (teamAscore < teamBscore) {
             this.updateVictories(this.teamB);
         }
-        console.log('team B after ', this.teamB);
     }
 
     updateVictories(teamWon) {
